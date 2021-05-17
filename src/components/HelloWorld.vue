@@ -1,13 +1,20 @@
 <template>
 <div class="wrapper">
-<header>Tasks</header>
+<header>ToDo</header>
+
+
 <div class="inputField">
-<input type="text" placeholder="Add task">
-<button><font-awesome-icon :icon="['fas', 'faPlus']" /></button>
+   <input v-model="inputField" v-on:keyup.enter="addTodo" class="mr-1" placeholder="Add todo" />
+   <button class="button">Add</button>
 </div>
+
+
 <ul class="todoList">
+  <li>Read<span><input type="checkbox"></span></li>
 </ul>
-</div>
+
+  </div>
+
 </template>
 
 <script lang="ts">
@@ -21,11 +28,17 @@ export default defineComponent({
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+body{
+  width: 100%;
+  height: 100vh;
+  padding: 10px;
+  background: linear-gradient(to bottom, #68EACC 0%, #497BE8 100%);
+}
 .wrapper{
   background: #fff;
   max-width: 400px;
@@ -65,11 +78,37 @@ import { library } from '@fortawesome/fontawesome-svg-core'
   width: 50px;
   height: 100%;
   border: none;
-  color:honeydew;
-  margin-left: 10px;
+  color: #fff;
+  margin-left: 5px;
+  font-size: 21px;
+  outline: none;
+  background: #c6ebe6;
   cursor: pointer;
   border-radius: 3px;
-  pointer-events: none;
+}
+
+.inputField button:hover {
+  background: #28e4ab;
+}
+.inputField button.active{
+  opacity: 1;
+  pointer-events: auto;
+}
+.wrapper .todoList{
+  max-height: 250px;
+  overflow-y: auto;
+}
+.todoList li{
+  position: relative;
+  list-style: none;
+  height: 45px;
+  line-height: 45px;
+  margin-bottom: 8px;
+  background: #f2f2f2;
+  border-radius: 3px;
+  padding: 0 15px;
+  cursor: default;
+  overflow: hidden;
 }
 
 </style>
