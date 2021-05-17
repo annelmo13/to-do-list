@@ -26,9 +26,6 @@ export default defineComponent({
   },
 });
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -1,29 +1,33 @@
 <template>
-<div class="wrapper">
-  <header>ToDo</header>
-  <form class="inputField" @submit.prevent="addNewTodo">
-    <input v-model="newTodo" name="newTodo" placeholder="Add todo">
-    <button>Add</button>
-  </form>
-  <ul>
-    <li class="todoList" v-for="(todo, index) in todos" :key="todo.id">
-      <h3 :class="{ done: todo.done }" @click="toggleDone(todo)">{{todo.content}}</h3>
-      <button class="removeTodo" @click="removeTodo(index)">Clear Todo</button>
-    </li>
-  </ul>
+  <div class="wrapper">
+    <header>ToDo</header>
+    <form class="inputField" @submit.prevent="addNewTodo">
+      <input v-model="newTodo" name="newTodo" placeholder="Add todo" />
+      <button>Add</button>
+    </form>
+    <ul>
+      <li class="todoList" v-for="(todo, index) in todos" :key="todo.id">
+        <h3 :class="{ done: todo.done }" @click="toggleDone(todo)">
+          {{ todo.content }}
+        </h3>
+        <button class="removeTodo" @click="removeTodo(index)">
+          Clear Todo
+        </button>
+      </li>
+    </ul>
 
-  <div class="footer">
-  <button @click="removeAllTodos">Clear All</button>
-  <button @click="markAllDone">All Done</button>
-  </div>
+    <div class="footer">
+      <button @click="removeAllTodos">Clear All</button>
+      <button @click="markAllDone">All Done</button>
+    </div>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref } from "vue";
 export default {
   setup() {
-    const newTodo = ref('');
+    const newTodo = ref("");
     const todos = ref([]);
     function addNewTodo() {
       todos.value.push({
@@ -31,8 +35,9 @@ export default {
         done: false,
         content: newTodo.value,
       });
-      newTodo.value = '';
+      newTodo.value = "";
     }
+    
     function toggleDone(todo) {
       todo.done = !todo.done;
     }
@@ -40,7 +45,7 @@ export default {
       todos.value.splice(index, 1);
     }
     function markAllDone() {
-      todos.value.forEach((todo) => todo.done = true);
+      todos.value.forEach(todo => (todo.done = true));
     }
     function removeAllTodos() {
       todos.value = [];
@@ -54,41 +59,40 @@ export default {
       markAllDone,
       removeAllTodos,
     };
-  }
-}
+  },
+};
 </script>
 
 <style>
-
-body{
+body {
   width: 100%;
   height: 100vh;
   padding: 10px;
 }
 
-.wrapper{
+.wrapper {
   background: #fff;
   max-width: 400px;
   width: 100%;
   margin: 120px auto;
   padding: 25px;
   border-radius: 5px;
-  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-.wrapper header{
- font-size: 20px;
- font-weight: bold;
- color:#2c3e50;
- font-family: Arial, Helvetica, sans-serif;
+.wrapper header {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2c3e50;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.wrapper .inputField{
+.wrapper .inputField {
   margin: 20px 0;
   width: 100%;
   display: flex;
   height: 45px;
 }
-.inputField input{
+.inputField input {
   width: 85%;
   height: 100%;
   outline: none;
@@ -98,11 +102,11 @@ body{
   padding-left: 15px;
   transition: all 0.3s ease;
 }
-.inputField input:focus{
-  border-color: #2c3e50;;
+.inputField input:focus {
+  border-color: #2c3e50;
 }
 
-.inputField button{
+.inputField button {
   width: 50px;
   height: 100%;
   border: none;
@@ -116,10 +120,10 @@ body{
 }
 
 .inputField button:hover,
-.footer button:hover{
+.footer button:hover {
   background: #28e4ab;
 }
-.inputField button.active{
+.inputField button.active {
   opacity: 1;
   pointer-events: auto;
 }
@@ -132,27 +136,16 @@ body{
   font-weight: 400;
   font-size: 16px;
   margin-left: 5px;
-  background:#87dbd0;
+  background: #87dbd0;
   cursor: pointer;
 }
-.footer button.active{
+.footer button.active {
   opacity: 1;
   pointer-events: auto;
 }
-.wrapper .todo{
+.wrapper .todo {
   max-height: 250px;
   overflow-y: auto;
-}
-.todoList{
-  list-style: none;
-  height: 45px;
-  line-height: 45px;
-  margin-bottom: 8px;
-  background: #f2f2f2;
-  border-radius: 3px;
-  padding: 0 15px;
-  cursor: default;
-  overflow: hidden;
 }
 
 .done {
