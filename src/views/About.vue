@@ -1,16 +1,16 @@
 <template>
   <div class="about">
-    <HelloWorld2 />
+  <Todo />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue"; // @ is an alias to /src
-import HelloWorld2 from "@/components/HelloWorld2.vue";
+import Todo from "@/components/Todo.vue";
 export default defineComponent({
-  name: "About",
+  name: "Todo",
   components: {
-    HelloWorld2,
+   Todo, 
   },
 });
 </script>

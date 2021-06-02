@@ -2,23 +2,21 @@
   <div class="wrapper">
     <header>ToDo</header>
     <form class="inputField" @submit.prevent="addNewTodo">
-      <input v-model="newTodo" name="newTodo" placeholder="Add todo" />
-      <button>Add</button>
+      <input v-model="newTodo" name="newTodo" autocomplete="off">
+      <v-btn color="secondary">Add</v-btn>
     </form>
     <ul>
       <li class="todoList" v-for="(todo, index) in todos" :key="todo.id">
         <h3 :class="{ done: todo.done }" @click="toggleDone(todo)">
           {{ todo.content }}
         </h3>
-        <button class="removeTodo" @click="removeTodo(index)">
-          Clear Todo
-        </button>
+        <v-btn color="secondary" @click="removeTodo(index)">Clear Todo</v-btn>
       </li>
     </ul>
 
     <div class="footer">
-      <button @click="removeAllTodos">Clear All</button>
-      <button @click="markAllDone">All Done</button>
+      <v-btn color="secondary" @click="removeAllTodos">Clear All</v-btn>
+      <v-btn color="secondary" @click="markAllDone">All Done</v-btn>
     </div>
   </div>
 </template>
@@ -37,7 +35,6 @@ export default {
       });
       newTodo.value = "";
     }
-    
     function toggleDone(todo) {
       todo.done = !todo.done;
     }
@@ -104,44 +101,6 @@ body {
 }
 .inputField input:focus {
   border-color: #2c3e50;
-}
-
-.inputField button {
-  width: 50px;
-  height: 100%;
-  border: none;
-  color: #fff;
-  margin-left: 5px;
-  font-size: 21px;
-  outline: none;
-  background: #87dbd0;
-  cursor: pointer;
-  border-radius: 3px;
-}
-
-.inputField button:hover,
-.footer button:hover {
-  background: #28e4ab;
-}
-.inputField button.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-.footer button {
-  padding: 6px 10px;
-  border-radius: 3px;
-  border: none;
-  outline: none;
-  color: #fff;
-  font-weight: 400;
-  font-size: 16px;
-  margin-left: 5px;
-  background: #87dbd0;
-  cursor: pointer;
-}
-.footer button.active {
-  opacity: 1;
-  pointer-events: auto;
 }
 .wrapper .todo {
   max-height: 250px;
