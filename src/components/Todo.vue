@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <header>ToDo</header>
+
     <form class="inputField" @submit.prevent="addNewTodo">
       <input v-model="newTodo" name="newTodo" autocomplete="off">
       <v-btn color="secondary">Add</v-btn>
@@ -66,7 +67,6 @@ body {
   height: 100vh;
   padding: 10px;
 }
-
 .wrapper {
   background: #fff;
   max-width: 400px;
@@ -76,7 +76,6 @@ body {
   border-radius: 5px;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
 }
-
 .wrapper header {
   font-size: 20px;
   font-weight: bold;
@@ -106,7 +105,6 @@ body {
   max-height: 250px;
   overflow-y: auto;
 }
-
 .done {
   text-decoration: line-through;
 }
